@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018.  Adrian Raff AKA Fr0stsp1re
+  ~ *************PROJECT LICENSE*************
+  ~
+  ~ This project was submitted by Adrian Raff as part of the  Android Basics Nanodegree At Udacity.
+  ~
+  ~ The Udacity Honor code requires your submissions must be your own work.
+  ~ Submitting this project as yours will cause you to break the Udacity Honor Code
+  ~ and may result in disiplinary action.
+  ~
+  ~ The author of this project allows you to check the code as a reference only. You may not submit this project or any part
+  ~ of the code as your own.
+  ~
+  ~ Besides the above notice, the following license applies and this license notice
+  ~ must be included in all works derived from this project.
+  ~
+  ~ MIT License
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  -->
+
+
+<!-- Begin layout wrapper !-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/imageView_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/oly_logo"
+        android:scaleType="centerCrop" />
+
+
+    <!-- Begin linear layout and split into two teams !-->
+
+    <LinearLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView_header"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <!-- Layout for team A !-->
+
+        <LinearLayout
+            android:id="@+id/layout_team_a"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp_team_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false" />
+
+            <TextView
+                android:id="@+id/team_a_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="Gymnist number:"
+                android:textColor="@color/colorTextStandard"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/team_a_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#c4554c4c"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/colorAccent"
+                android:textSize="48sp" />
+
+            <!-- Slider and TextView for team A strength !-->
+            <TextView
+                android:id="@+id/team_a_strength_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Strength"
+                android:textColor="@color/colorTextStandard"
+
+                />
+
+            <TextView
+                android:id="@+id/team_a_strength_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_a_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextStandard" />
+
+
+            <!-- Slider and TextView for team A style !-->
+
+            <TextView
+                android:id="@+id/team_a_style_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Style"
+                android:textColor="@color/colorTextStandard" />
+
+            <TextView
+                android:id="@+id/team_a_style_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_a_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textColor="@color/colorTextStandard" />
+
+            <!-- Slider and TextView for team A performance!-->
+
+
+            <TextView
+                android:id="@+id/team_a_performance_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Performance"
+                android:textColor="@color/colorTextStandard" />
+
+            <TextView
+                android:id="@+id/team_a_performance_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_a_performance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextStandard" />
+
+            <!-- Begin horizontal button layout for index and score buttons !-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/button_previous_playerA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/baseline_undo_black_24"
+                    android:gravity="center"
+                    android:onClick="backwardTeamA"
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextStandard" />
+
+
+                <Button
+                    android:id="@+id/button_next_playerA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/baseline_redo_black_24"
+                    android:gravity="center"
+                    android:onClick="forwardTeamA"
+
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextStandard" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_a_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/baseline_assignment_turned_in_24"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:onClick="calculateAverageScoreTeamA"
+
+                android:textColor="@color/colorTextStandard" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/black" />
+
+        <!-- Begin layout for team B !-->
+
+        <LinearLayout
+            android:id="@+id/layout_team_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp_team_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false" />
+
+
+            <TextView
+                android:id="@+id/team_b_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="Gymnist number:"
+                android:textColor="@color/colorTextStandard"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/team_b_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#c4554c4c"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/colorAccent"
+                android:textSize="48sp" />
+
+            <!-- Slider and TextView for team B strength !-->
+            <TextView
+                android:id="@+id/team_b_strength_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Strength"
+                android:textColor="@color/colorTextStandard" />
+
+            <TextView
+                android:id="@+id/team_b_strength_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_b_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextStandard" />
+
+
+            <!-- Slider and TextView for team B style !-->
+
+            <TextView
+                android:id="@+id/team_b_style_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Style"
+                android:textColor="@color/colorTextStandard" />
+
+            <TextView
+                android:id="@+id/team_b_style_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_b_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextStandard" />
+
+            <!-- Slider and TextView for team ABperformance!-->
+
+
+            <TextView
+                android:id="@+id/team_b_performance_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Performance"
+                android:textColor="@color/colorTextStandard" />
+
+            <TextView
+                android:id="@+id/team_b_performance_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/colorTextStandard" />
+
+            <SeekBar
+                android:id="@+id/seekBar_team_b_performance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextStandard" />
+
+            <!-- Begin horizontal button layout for index and score buttons !-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/button_previous_playerB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/baseline_undo_black_24"
+
+                    android:gravity="center"
+                    android:onClick="backwardTeamB"
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextStandard" />
+
+
+                <Button
+                    android:id="@+id/button_next_playerB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/baseline_redo_black_24"
+                    android:gravity="center"
+                    android:onClick="forwardTeamB"
+
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorTextStandard" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_B_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/baseline_assignment_turned_in_24"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:onClick="calculateAverageScoreTeamB"
+
+
+                android:textColor="@color/colorTextStandard" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Begin total average score section for both teams !-->
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="-1dp"
+        android:background="@drawable/baseline_replay_black_24"
+        android:onClick="startApp"
+
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>
+
+
