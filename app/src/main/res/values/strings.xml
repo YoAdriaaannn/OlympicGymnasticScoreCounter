@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">OlympicGymnasticScore</string>
+    <string name="app_name">Olympic Gymnastic Score Keeper</string>
+    <string name="string_strength">Strength</string>
+    <string name="string_style">Style</string>
+    <string name="string_0">0</string>
+    <string name="string_gymnast_number">Gymnast number:</string>
+    <string name="string_performance">Performance</string>
 </resources>

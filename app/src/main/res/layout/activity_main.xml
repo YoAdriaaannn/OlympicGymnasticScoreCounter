@@ -38,14 +38,19 @@
 
 
 <!-- Begin layout wrapper !-->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical">
 
+<!-- The header image :-->
 
     <ImageView
         android:id="@+id/imageView_header"
@@ -64,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView_header"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="@dimen/paddingStandard">
 
 
         <!-- Layout for team A !-->
@@ -93,7 +98,7 @@
                 android:gravity="center"
                 android:text="Gymnist number:"
                 android:textColor="@color/colorTextStandard"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textStandard" />
 
             <TextView
                 android:id="@+id/team_a_score"
@@ -106,14 +111,14 @@
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/colorAccent"
-                android:textSize="48sp" />
+                android:textSize="@dimen/textScoreBoard" />
 
             <!-- Slider and TextView for team A strength !-->
             <TextView
                 android:id="@+id/team_a_strength_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Strength"
+                android:text="@string/string_strength"
                 android:textColor="@color/colorTextStandard"
 
                 />
@@ -138,14 +143,14 @@
                 android:id="@+id/team_a_style_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Style"
+                android:text="@string/string_style"
                 android:textColor="@color/colorTextStandard" />
 
             <TextView
                 android:id="@+id/team_a_style_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/string_0"
                 android:textColor="@color/colorTextStandard" />
 
             <SeekBar
@@ -169,7 +174,7 @@
                 android:id="@+id/team_a_performance_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/string_0"
                 android:textColor="@color/colorTextStandard" />
 
             <SeekBar
@@ -221,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/baseline_assignment_turned_in_24"
-                android:backgroundTint="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorPrimary"
                 android:gravity="center"
                 android:onClick="calculateAverageScoreTeamA"
 
@@ -230,9 +235,9 @@
         </LinearLayout>
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="@dimen/spacingStandard"
             android:layout_height="match_parent"
-            android:textColor="@android:color/black" />
+          />
 
         <!-- Begin layout for team B !-->
 
@@ -259,36 +264,36 @@
                 android:background="@color/colorAccent"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
-                android:text="Gymnist number:"
+                android:text="@string/string_gymnast_number"
                 android:textColor="@color/colorTextStandard"
-                android:textSize="14sp" />
+                android:textSize="@dimen/textStandard" />
 
             <TextView
                 android:id="@+id/team_b_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/marginBottomStandard"
+                android:layout_marginTop="@dimen/marginTopStandard"
                 android:background="#c4554c4c"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:text=""
                 android:textColor="@color/colorAccent"
-                android:textSize="48sp" />
+                android:textSize="@dimen/textScoreBoard" />
 
             <!-- Slider and TextView for team B strength !-->
             <TextView
                 android:id="@+id/team_b_strength_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Strength"
+                android:text="@string/string_strength"
                 android:textColor="@color/colorTextStandard" />
 
             <TextView
                 android:id="@+id/team_b_strength_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/string_0"
                 android:textColor="@color/colorTextStandard" />
 
             <SeekBar
@@ -304,14 +309,14 @@
                 android:id="@+id/team_b_style_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Style"
+                android:text="@string/string_style"
                 android:textColor="@color/colorTextStandard" />
 
             <TextView
                 android:id="@+id/team_b_style_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/string_0"
                 android:textColor="@color/colorTextStandard" />
 
             <SeekBar
@@ -327,14 +332,14 @@
                 android:id="@+id/team_b_performance_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Performance"
+                android:text="@string/string_performance"
                 android:textColor="@color/colorTextStandard" />
 
             <TextView
                 android:id="@+id/team_b_performance_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
+                android:text="@string/string_0"
                 android:textColor="@color/colorTextStandard" />
 
             <SeekBar
@@ -357,10 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/baseline_undo_black_24"
-
                     android:gravity="center"
                     android:onClick="backwardTeamB"
-
                     android:textAllCaps="true"
                     android:textColor="@color/colorTextStandard" />
 
@@ -373,8 +376,6 @@
                     android:background="@drawable/baseline_redo_black_24"
                     android:gravity="center"
                     android:onClick="forwardTeamB"
-
-
                     android:textAllCaps="true"
                     android:textColor="@color/colorTextStandard" />
 
@@ -387,10 +388,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/baseline_assignment_turned_in_24"
-                android:backgroundTint="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorPrimary"
                 android:onClick="calculateAverageScoreTeamB"
-
-
                 android:textColor="@color/colorTextStandard" />
         </LinearLayout>
 
@@ -404,15 +403,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_main"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="@dimen/marginBottomStandard"
+
+        android:layout_marginTop="@dimen/marginTopExtraSmall"
         android:background="@drawable/baseline_replay_black_24"
         android:onClick="startApp"
 
         android:textAllCaps="true"
-        android:textColor="#FFFFFF" />
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>
 
 
+</ScrollView>
