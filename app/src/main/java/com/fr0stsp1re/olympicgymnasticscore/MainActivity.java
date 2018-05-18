@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 convertedProgressStrengthB = .10f * progressChanged;
-                strengthScoreB.setText(String.valueOf(convertedProgressStrengthB));
+                strengthScoreB.setText(String.valueOf(onePoint.format(convertedProgressStrengthB)));
 
             }
 
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStrengthB,
                         Toast.LENGTH_SHORT).show();
 
-                strengthScoreB.setText(String.valueOf(convertedProgressStrengthB));
+                strengthScoreB.setText(String.valueOf(onePoint.format(convertedProgressStrengthB)));
             }
         });
 
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 convertedProgressStyleB = .10f * progressChanged;
-                styleScoreB.setText(String.valueOf(convertedProgressStyleB));
+                styleScoreB.setText(String.valueOf(onePoint.format(convertedProgressStyleB)));
 
             }
 
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStyleB,
                         Toast.LENGTH_SHORT).show();
 
-                styleScoreB.setText(String.valueOf(convertedProgressStyleB));
+                styleScoreB.setText(String.valueOf(onePoint.format(convertedProgressStyleB)));
             }
         });
 
@@ -270,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 convertedProgressPerformanceB = .10f * progressChanged;
-                performanceScoreB.setText(String.valueOf(convertedProgressPerformanceB));
+                performanceScoreB.setText(String.valueOf(onePoint.format(convertedProgressPerformanceB)));
 
             }
 
@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressPerformanceB,
                         Toast.LENGTH_SHORT).show();
 
-                performanceScoreB.setText(String.valueOf(convertedProgressPerformanceB));
+                performanceScoreB.setText(String.valueOf(onePoint.format(convertedProgressPerformanceB)));
             }
         });
 
@@ -302,8 +302,8 @@ public class MainActivity extends AppCompatActivity {
         // Trick display to read index 0 as 1 by adding 1 to the string output
         teamAPlayerNumber.setText("Gymnast number: " + (indexTeamA + 1));
         teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB + 1));
-        teamAScore.setText(String.valueOf(averageScoreTeamA));
-        teamBscore.setText(String.valueOf(averageScoreTeamB));
+        teamAScore.setText(String.valueOf(onePoint.format(averageScoreTeamA)));
+        teamBscore.setText(String.valueOf(onePoint.format(averageScoreTeamB)));
 
         strengthA.setProgress(100);
         styleA.setProgress(100);
