@@ -7,6 +7,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hbb20.CountryCodePicker;
+
 import java.text.DecimalFormat;
 import java.util.Set;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public SeekBar strengthA, styleA, performanceA, strengthB, styleB, performanceB = null;
 
-    private TextView strengthScoreA, styleScoreA, performanceScoreA, teamAScore, strengthScoreB, styleScoreB, performanceScoreB, teamBscore, teamAPlayerNumber, teamBPlayerNumber;
+    private TextView strengthScoreA, styleScoreA, performanceScoreA, teamAScore, strengthScoreB, styleScoreB, performanceScoreB, teamBscore, teamAPlayerNumber, teamBPlayerNumber, finalAverageScore;
 
     private float convertedProgressStrengthA = 0.0f;
     private float convertedProgressStyleA = 0.0f;
@@ -42,10 +44,16 @@ public class MainActivity extends AppCompatActivity {
     // This is used to format our scoring system to one decimal place.
     DecimalFormat onePoint = new DecimalFormat("#.#");
 
+    private CountryCodePicker countryTeamA, countryTeamB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Init country code pickers
+        countryTeamA = findViewById(R.id.ccp_team_a);
+        countryTeamB = findViewById(R.id.ccp_team_b);
 
 
         //init the SeekBars team A
@@ -100,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
         performanceScoreB = findViewById(R.id.team_b_performance_score);
         teamBscore = findViewById(R.id.team_b_score);
         teamBPlayerNumber = findViewById(R.id.team_b_tag);
+
+
+        // Init TextViews for final average score of both teams
+
+        finalAverageScore = findViewById(R.id.textView_final_score);
 
 
         // Initialize arrays that hold the score for each player. These serve as a stack for each team and allow for a re-score
@@ -344,9 +357,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
      * Move the team contestants back and forth through the arrayScoreTeamA which stores the scores for each player. This provides a way to undo scores by over writing them with new
-     *
+     * <p>
      * ones.
      */
 
@@ -361,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
             // Error handling if we go out of bounds.
             Toast.makeText(this, "There are only 6 gymnasts in an Olympic event", Toast.LENGTH_SHORT).show();
             teamAScore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
+            endMatch();
 
         } else {
 
@@ -415,14 +428,14 @@ public class MainActivity extends AppCompatActivity {
         if (indexTeamB >= 5) {
 
             Toast.makeText(this, "There are only 6 gymnasts in an Olympic event", Toast.LENGTH_SHORT).show();
+            endMatch();
         } else {
 
 
-
             indexTeamB++;
-            teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB +1));
+            teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB + 1));
 
-            teamBscore.setText(String .valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
+            teamBscore.setText(String.valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
 
             strengthB.setProgress(100);
             styleB.setProgress(100);
@@ -436,7 +449,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "You are at the start of the list", Toast.LENGTH_SHORT).show();
         } else {
             indexTeamB = indexTeamB - 1;
-            teamBscore.setText(String .valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
+            teamBscore.setText(String.valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
 
             strengthB.setProgress(100);
             styleB.setProgress(100);
@@ -447,5 +460,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    // End match
+
+    public void endMatch() {
+
+        // Set up to floats to hold the average score
+        float totalAverageForAllGymnastsTeamA = 0;
+        float totalAverageForAllGymnastsTeamB = 0;
+
+        // Loop through the score holding arrays the amount of members per each team. This number is 6 according to olympic rules.
+
+        for (int i = 0; i < 6; i++) {
+
+            // Add the totals of each array index together
+
+            totalAverageForAllGymnastsTeamA = totalAverageForAllGymnastsTeamA + arrayScoreTeamA[i];
+            totalAverageForAllGymnastsTeamB = totalAverageForAllGymnastsTeamB + arrayScoreTeamB[i];
+
+        }
+
+        // Exit the loop and divide by 6 to get total average for each team
+
+        totalAverageForAllGymnastsTeamA = totalAverageForAllGymnastsTeamA / 6;
+        totalAverageForAllGymnastsTeamB = totalAverageForAllGymnastsTeamB / 6;
+
+        // Display the averages. Change the score header text and display a message at bottom of screen.
+
+        teamAPlayerNumber.setText("Final average score:");
+        teamAScore.setText(String.valueOf(onePoint.format(totalAverageForAllGymnastsTeamA)));
+        teamBPlayerNumber.setText("Final average score:");
+        teamBscore.setText(String.valueOf(onePoint.format(totalAverageForAllGymnastsTeamB)));
+
+        String teamAFlag = countryTeamA.getSelectedCountryName().toString();
+        String teamBFlag = countryTeamB.getSelectedCountryName().toString();
+
+        finalAverageScore.setText("The final average score for the "  + teamAFlag + " team is: " + onePoint.format(totalAverageForAllGymnastsTeamA) + "\n" + "The final average score for the " + teamBFlag  + " team is: " + onePoint.format((totalAverageForAllGymnastsTeamB)));
+
+
+    }
+
 
 }

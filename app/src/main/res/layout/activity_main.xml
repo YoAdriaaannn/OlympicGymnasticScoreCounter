@@ -249,7 +249,7 @@
             android:orientation="vertical">
 
             <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp_team_B"
+                android:id="@+id/ccp_team_b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:ccp_showFullName="true"
@@ -391,6 +391,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:onClick="calculateAverageScoreTeamB"
                 android:textColor="@color/colorTextStandard" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -411,6 +412,18 @@
 
         android:textAllCaps="true"
         android:textColor="@android:color/white" />
+
+
+
+    <TextView
+        android:id="@+id/textView_final_score"
+        android:layout_below="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textStandard"
+        android:textColor="@color/colorTextStandard"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/string_placeholder"/>
 
 
 </RelativeLayout>

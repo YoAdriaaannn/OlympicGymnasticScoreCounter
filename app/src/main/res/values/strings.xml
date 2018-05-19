@@ -5,4 +5,5 @@
     <string name="string_0">0</string>
     <string name="string_gymnast_number">Gymnast number:</string>
     <string name="string_performance">Performance</string>
+    <string name="string_placeholder">Placeholder</string>
 </resources>
