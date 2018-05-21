@@ -37,13 +37,31 @@
   ~
   -->
 
-<resources>
-    <dimen name="paddingStandard">8dp</dimen>
-    <dimen name="textStandard">14sp</dimen>
-    <dimen name="textScoreBoard">48sp</dimen>
-    <dimen name="marginTopStandard">8dp</dimen>
-    <dimen name="marginBottomStandard">8dp</dimen>
-    <dimen name="marginTopExtraSmall">1dp</dimen>
-    <dimen name="spacingStandard">10dp</dimen>
-    <dimen name="spacing_tiny">1dp</dimen>
-</resources>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background"
+        android:gravity="center_vertical|fill_horizontal">
+        <shape android:shape="rectangle"
+            android:tint="#ffd600">
+            <corners android:radius="8dp"/>
+            <size android:height="30dp" />
+            <solid android:color="#ffd600" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress"
+        android:gravity="center_vertical|fill_horizontal">
+        <scale android:scaleWidth="100%">
+            <selector>
+                <item android:state_enabled="false"
+                    android:drawable="@android:color/transparent" />
+                <item>
+                    <shape android:shape="rectangle"
+                        android:tint="#ff0008">
+                        <corners android:radius="8dp"/>
+                        <size android:height="30dp" />
+                        <solid android:color="#ff0008" />
+                    </shape>
+                </item>
+            </selector>
+        </scale>
+    </item>
+</layer-list>

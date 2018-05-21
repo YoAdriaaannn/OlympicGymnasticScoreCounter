@@ -6,4 +6,19 @@
     <string name="string_gymnast_number">Gymnast number:</string>
     <string name="string_performance">Performance</string>
     <string name="string_placeholder">Placeholder</string>
+    <string name="string_move_backward">Move backward through gymnasts</string>
+    <string name="string_Move_forward">Move forward through gymnasts.</string>
+    <string name="string_calculate_score">Calculate score.</string>
+    <string name="string_oly_logo">Olympic logo image.</string>
+    <string name="text_country_picker">Country picker dropdown</string>
+    <string name="string_seekbar_strength">Seekbar. Slide to adjust score for strength</string>
+    <string name="string_seekbar_style">Seekbar. Slide to adjust score for style.</string>
+    <string name="string_seekbar_performance">Seekbar. Slide to adjust score for performance.</string>
+    <string name="string_reset">Reset - Start new match.</string>
+    <string name="string_final_average">The final average score for the &#160; </string>
+    <string name="string_team_is">&#160; team is: &#160; </string>
+    <string name="string_end_match">There are only 6 gymnasts in an Olympic event</string>
+    <string name="string_list_start">You are at the start of the list</string>
+    <string name="string_final_score">Final average score: </string>
+    <string name="string_header_message_1">Gymnast number: </string>
 </resources>

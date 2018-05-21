@@ -1,5 +1,6 @@
 package com.fr0stsp1re.olympicgymnasticscore;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import com.hbb20.CountryCodePicker;
 
 import java.text.DecimalFormat;
-import java.util.Set;
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     public SeekBar strengthA, styleA, performanceA, strengthB, styleB, performanceB = null;
 
-    private TextView strengthScoreA, styleScoreA, performanceScoreA, teamAScore, strengthScoreB, styleScoreB, performanceScoreB, teamBscore, teamAPlayerNumber, teamBPlayerNumber, finalAverageScore;
+    // These TextViews are used to display information in the app
+
+    private TextView strengthScoreA, styleScoreA, performanceScoreA, teamAscore, strengthScoreB, styleScoreB, performanceScoreB, teamBscore, teamAPlayerNumber, teamBPlayerNumber, finalAverageScore;
 
     private float convertedProgressStrengthA = 0.0f;
     private float convertedProgressStyleA = 0.0f;
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         strengthScoreA = findViewById(R.id.team_a_strength_score);
         styleScoreA = findViewById(R.id.team_a_style_score);
         performanceScoreA = findViewById(R.id.team_a_performance_score);
-        teamAScore = findViewById(R.id.team_a_score);
+        teamAscore = findViewById(R.id.team_a_score);
         teamAPlayerNumber = findViewById(R.id.team_a_tag);
 
 
@@ -120,12 +123,12 @@ public class MainActivity extends AppCompatActivity {
         arrayScoreTeamA = new float[6];
         arrayScoreTeamB = new float[6];
 
-        /**
-         *  Start team A slider controls to set scores for each player. Challenge: Gymnastics uses a one point decimal scoring system. Our sliders can only deal with integers.
-         *  Workaround: set sliders to 100 amd step by 10. Multiply that value by our float of .10 so we can come up with traditional scoring values for gymnastics which are based
-         *  on a 10 point system and 1/10 a point is deducted from your overall 10 for every thing the judges will dock a contestant on. Later on I format the decimal to 1 place using
-         *  the DecimalFormat class
-         */
+
+        // Start team A slider controls to set scores for each player. Challenge: Gymnastics uses a one point decimal scoring system. Our sliders can only deal with integers.
+        // Workaround: set sliders to 100 amd step by 10. Multiply that value by our float of .10 so we can come up with traditional scoring values for gymnastics which are based
+        // on a 10 point system and 1/10 a point is deducted from your overall 10 for every thing the judges will dock a contestant on. Later on I format the decimal to 1 place using
+        // the DecimalFormat class
+
 
         // Set up the listener for change in  team A strength slider
 
@@ -150,8 +153,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressStrengthA = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStrengthA,
-                        Toast.LENGTH_SHORT).show();
+
 
                 strengthScoreA.setText(String.valueOf(onePoint.format(convertedProgressStrengthA)));
             }
@@ -179,8 +181,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressStyleA = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStyleA,
-                        Toast.LENGTH_SHORT).show();
+
 
                 styleScoreA.setText(String.valueOf(onePoint.format(convertedProgressStyleA)));
             }
@@ -208,17 +209,13 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressPerformanceA = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressPerformanceA,
-                        Toast.LENGTH_SHORT).show();
 
                 performanceScoreA.setText(String.valueOf(onePoint.format(convertedProgressPerformanceA)));
             }
         });
 
 
-        /**
-         * Start team b controls to set score for each player. This is set up just like team A in the above methods.
-         */
+        // Start team b controls to set score for each player. This is set up just like team A in the above methods.
 
 
         // Set up the listener for change in  team B strength slider
@@ -240,8 +237,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressStrengthB = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStrengthB,
-                        Toast.LENGTH_SHORT).show();
+
 
                 strengthScoreB.setText(String.valueOf(onePoint.format(convertedProgressStrengthB)));
             }
@@ -267,8 +263,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressStyleB = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressStyleB,
-                        Toast.LENGTH_SHORT).show();
+
 
                 styleScoreB.setText(String.valueOf(onePoint.format(convertedProgressStyleB)));
             }
@@ -294,8 +289,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 convertedProgressPerformanceB = .10f * progressChanged;
-                Toast.makeText(MainActivity.this, "seek bar progress:" + convertedProgressPerformanceB,
-                        Toast.LENGTH_SHORT).show();
+
 
                 performanceScoreB.setText(String.valueOf(onePoint.format(convertedProgressPerformanceB)));
             }
@@ -307,17 +301,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void startApp(View v) {
 
+        // Reset array index variable.
         indexTeamA = 0;
         indexTeamB = 0;
+
+        // Reset average score variable.
         averageScoreTeamA = 0;
         averageScoreTeamB = 0;
 
+        // Clear out  average score variables.
+        Arrays.fill(arrayScoreTeamA, 0f);
+        Arrays.fill(arrayScoreTeamB, 0f);
+
         // Trick display to read index 0 as 1 by adding 1 to the string output
-        teamAPlayerNumber.setText("Gymnast number: " + (indexTeamA + 1));
-        teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB + 1));
-        teamAScore.setText(String.valueOf(onePoint.format(averageScoreTeamA)));
+        teamAPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamA + 1));
+        teamBPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamB + 1));
+
+        teamAscore.setText(String.valueOf(onePoint.format(averageScoreTeamA)));
         teamBscore.setText(String.valueOf(onePoint.format(averageScoreTeamB)));
 
+        //Reset score color to green.
+        teamAscore.setTextColor(Color.GREEN);
+        teamBscore.setTextColor(Color.GREEN);
+
+        // Reset seek bars back to max value.
         strengthA.setProgress(100);
         styleA.setProgress(100);
         performanceA.setProgress(100);
@@ -325,17 +332,19 @@ public class MainActivity extends AppCompatActivity {
         styleB.setProgress(100);
         performanceB.setProgress(100);
 
+
     }
 
     /**
      * Calculate average score of the three values for team A the judges use to score a contestant. Round the values to one decimal place.
      */
+
     public void calculateAverageScoreTeamA(View view) {
 
 
         averageScoreTeamA = (convertedProgressPerformanceA + convertedProgressStrengthA + convertedProgressStyleA) / 3;
 
-        teamAScore.setText(String.valueOf(onePoint.format(averageScoreTeamA)));
+        teamAscore.setText(String.valueOf(onePoint.format(averageScoreTeamA)));
         // Store average in array to be called later for total team average.
         arrayScoreTeamA[indexTeamA] = averageScoreTeamA;
 
@@ -350,6 +359,7 @@ public class MainActivity extends AppCompatActivity {
 
         averageScoreTeamB = (convertedProgressPerformanceB + convertedProgressStrengthB + convertedProgressStyleB) / 3;
         teamBscore.setText(String.valueOf(onePoint.format(averageScoreTeamB)));
+
         // Store average in array to be called later for total team average.
         arrayScoreTeamB[indexTeamB] = averageScoreTeamB;
 
@@ -371,8 +381,8 @@ public class MainActivity extends AppCompatActivity {
         if (indexTeamA >= 5) {
 
             // Error handling if we go out of bounds.
-            Toast.makeText(this, "There are only 6 gymnasts in an Olympic event", Toast.LENGTH_SHORT).show();
-            teamAScore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
+            Toast.makeText(this, R.string.string_end_match, Toast.LENGTH_SHORT).show();
+            teamAscore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
             endMatch();
 
         } else {
@@ -381,33 +391,33 @@ public class MainActivity extends AppCompatActivity {
             indexTeamA++;
 
             // Set header to show team player number. Since we have 6 gymnasts and the index starts at zero I add 1 to the display so it appears as 1 - 6
-            teamAPlayerNumber.setText("Gymnast number: " + (indexTeamA + 1));
+            teamAPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamA + 1));
 
             //Set score to the current score stored in the index for arrayScoreTeamA
-            teamAScore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
+            teamAscore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
 
             // Reset sliders to value of 100 which appears as a 10 through conversion
             strengthA.setProgress(100);
             styleA.setProgress(100);
             performanceA.setProgress(100);
 
+
         }
     }
 
     // Move backwards through index
-
     public void backwardTeamA(View view) {
 
         // Check to see if we are within index bounds
         if (indexTeamA <= 0) {
             Toast.makeText(this, "You are at the start of the list", Toast.LENGTH_SHORT).show();
-            teamAScore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
+            teamAscore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
         } else {
             // Step backwards through index
             indexTeamA = indexTeamA - 1;
             // Set the scoreboard to the current score stored in the current index
 
-            teamAScore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
+            teamAscore.setText(String.valueOf(onePoint.format(arrayScoreTeamA[indexTeamA])));
 
             // Reset all sliders to 100 which appear as a 10 through conversion
             strengthA.setProgress(100);
@@ -415,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
             performanceA.setProgress(100);
 
             // Set header to display current contestant
-            teamAPlayerNumber.setText("Gymnast number: " + (indexTeamA + 1));
+            teamAPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamA + 1));
         }
 
 
@@ -423,7 +433,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Team B player navigation
-
     public void forwardTeamB(View view) {
         if (indexTeamB >= 5) {
 
@@ -433,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             indexTeamB++;
-            teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB + 1));
+            teamBPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamB + 1));
 
             teamBscore.setText(String.valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
 
@@ -446,7 +455,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void backwardTeamB(View view) {
         if (indexTeamB <= 0) {
-            Toast.makeText(this, "You are at the start of the list", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.string_list_start, Toast.LENGTH_SHORT).show();
         } else {
             indexTeamB = indexTeamB - 1;
             teamBscore.setText(String.valueOf(onePoint.format((arrayScoreTeamB[indexTeamB]))));
@@ -455,14 +464,13 @@ public class MainActivity extends AppCompatActivity {
             styleB.setProgress(100);
             performanceB.setProgress(100);
 
-            teamBPlayerNumber.setText("Gymnast number: " + (indexTeamB + 1));
+            teamBPlayerNumber.setText(getString(R.string.string_header_message_1) + (indexTeamB + 1));
         }
 
 
     }
 
     // End match
-
     public void endMatch() {
 
         // Set up to floats to hold the average score
@@ -474,28 +482,27 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 6; i++) {
 
             // Add the totals of each array index together
-
             totalAverageForAllGymnastsTeamA = totalAverageForAllGymnastsTeamA + arrayScoreTeamA[i];
             totalAverageForAllGymnastsTeamB = totalAverageForAllGymnastsTeamB + arrayScoreTeamB[i];
 
         }
 
         // Exit the loop and divide by 6 to get total average for each team
-
         totalAverageForAllGymnastsTeamA = totalAverageForAllGymnastsTeamA / 6;
         totalAverageForAllGymnastsTeamB = totalAverageForAllGymnastsTeamB / 6;
 
         // Display the averages. Change the score header text and display a message at bottom of screen.
-
-        teamAPlayerNumber.setText("Final average score:");
-        teamAScore.setText(String.valueOf(onePoint.format(totalAverageForAllGymnastsTeamA)));
-        teamBPlayerNumber.setText("Final average score:");
+        teamAPlayerNumber.setText(getString(R.string.string_final_score));
+        teamAscore.setTextColor(Color.RED);
+        teamAscore.setText(String.valueOf(onePoint.format(totalAverageForAllGymnastsTeamA)));
+        teamBPlayerNumber.setText(getString(R.string.string_final_score));
+        teamBscore.setTextColor(Color.RED);
         teamBscore.setText(String.valueOf(onePoint.format(totalAverageForAllGymnastsTeamB)));
 
         String teamAFlag = countryTeamA.getSelectedCountryName().toString();
         String teamBFlag = countryTeamB.getSelectedCountryName().toString();
 
-        finalAverageScore.setText("The final average score for the "  + teamAFlag + " team is: " + onePoint.format(totalAverageForAllGymnastsTeamA) + "\n" + "The final average score for the " + teamBFlag  + " team is: " + onePoint.format((totalAverageForAllGymnastsTeamB)));
+        finalAverageScore.setText(getString(R.string.string_final_average) + teamAFlag + getString(R.string.string_team_is) + onePoint.format(totalAverageForAllGymnastsTeamA) + "\n" + getString(R.string.string_final_average) + teamBFlag + getString(R.string.string_team_is) + onePoint.format((totalAverageForAllGymnastsTeamB)));
 
 
     }

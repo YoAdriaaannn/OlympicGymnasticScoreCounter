@@ -37,13 +37,12 @@
   ~
   -->
 
-<resources>
-    <dimen name="paddingStandard">8dp</dimen>
-    <dimen name="textStandard">14sp</dimen>
-    <dimen name="textScoreBoard">48sp</dimen>
-    <dimen name="marginTopStandard">8dp</dimen>
-    <dimen name="marginBottomStandard">8dp</dimen>
-    <dimen name="marginTopExtraSmall">1dp</dimen>
-    <dimen name="spacingStandard">10dp</dimen>
-    <dimen name="spacing_tiny">1dp</dimen>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:tint="#646a68">
+    <corners android:radius="8dp"/>
+    <size android:width="4dp"
+        android:height="4dp" />
+    <solid android:color="#646a68" />
+
+</shape>
